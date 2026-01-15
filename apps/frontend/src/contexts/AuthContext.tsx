@@ -5,6 +5,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
+import { log, error } from '@/lib/logger';
 
 // Tipos
 export type UserRole = 'ADMIN' | 'CLIENTE';
@@ -63,6 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Login
   const login = async (credentials: LoginCredentials) => {
     try {
+      log('[AUTH] login start', credentials.email);
       const response = await axios.post(`${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/api/auth/login`, credentials);
 
       if (response.data.success) {
@@ -77,11 +79,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
         // Configurar axios com token
         axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
+        log('[AUTH] login ok', usuario.email);
       } else {
         throw new Error(response.data.message || 'Erro ao fazer login');
       }
     } catch (error: any) {
-      console.error('Erro no login:', error);
+      error('[AUTH] login error', error.response?.data || error.message);
       throw new Error(
         error.response?.data?.message || 
         error.message || 
@@ -92,6 +95,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Logout
   const logout = () => {
+    log('[AUTH] logout');
     setUser(null);
     setToken(null);
 

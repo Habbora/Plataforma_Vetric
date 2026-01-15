@@ -4,6 +4,7 @@
  */
 
 import axios, { AxiosInstance } from 'axios';
+import { log, error } from '../lib/logger';
 
 class VetricAPI {
   private api: AxiosInstance;
@@ -19,22 +20,34 @@ class VetricAPI {
 
     // Interceptor para adicionar token de autenticação
     this.api.interceptors.request.use((config) => {
-      // Pegar token do localStorage
       const token = localStorage.getItem('@vetric:token');
-      
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
-      
-      console.log(`[API] ${config.method?.toUpperCase()} ${config.url}`);
+      (config as any).__start = performance.now();
+      log('[API]', (config.method || 'GET').toUpperCase(), config.url);
       return config;
     });
 
     this.api.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        console.error('[API Error]', error.response?.data || error.message);
-        return Promise.reject(error);
+      (response) => {
+        const start = (response.config as any).__start;
+        const ms = start ? Math.round(performance.now() - start) : undefined;
+        log('[API]', response.config.method?.toUpperCase(), response.config.url, '->', response.status, ms !== undefined ? `${ms}ms` : '');
+        return response;
+      },
+      (err) => {
+        try {
+          const cfg = err.config || {};
+          const start = (cfg as any).__start;
+          const ms = start ? Math.round(performance.now() - start) : undefined;
+          const status = err.response?.status;
+          const data = err.response?.data;
+          error('[API Error]', cfg.method?.toUpperCase(), cfg.url, '->', status ?? '-', ms !== undefined ? `${ms}ms` : '', data || err.message);
+        } catch (e) {
+          error('[API Error]', err);
+        }
+        return Promise.reject(err);
       }
     );
   }
