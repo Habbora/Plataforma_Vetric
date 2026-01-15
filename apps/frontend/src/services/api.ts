@@ -4,14 +4,13 @@
  */
 
 import axios, { AxiosInstance } from 'axios';
-import { getApiBaseUrl } from '../config/runtime';
 
 class VetricAPI {
   private api: AxiosInstance;
 
   constructor() {
     this.api = axios.create({
-      baseURL: `${getApiBaseUrl()}/api`,
+      baseURL: `${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/api`,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',
@@ -228,7 +227,7 @@ class VetricAPI {
   // ==================== HEALTH CHECK ====================
 
   async healthCheck() {
-    const { data } = await axios.get(`${getApiBaseUrl()}/health`);
+    const { data } = await axios.get(`${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/health`);
     return data;
   }
 }
