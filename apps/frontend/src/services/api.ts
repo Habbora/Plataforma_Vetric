@@ -6,12 +6,28 @@
 import axios, { AxiosInstance } from 'axios';
 import { log, error } from '../lib/logger';
 
+console.log('RUN Vetric API')
+
 class VetricAPI {
   private api: AxiosInstance;
 
   constructor() {
+    const runtimeEnv = (window as any).__ENV__?.VITE_API_URL;
+    const buildEnv = (import.meta as any).env.VITE_API_URL;
+    console.log('[VITE_API_URL runtime]', runtimeEnv);
+    console.log('[VITE_API_URL build]', buildEnv);
+
+    const apiUrl =
+      (window as any).__ENV__?.VITE_API_URL ||
+      (import.meta as any).env.VITE_API_URL;
+
+    if (!apiUrl) {
+      throw new Error('VITE_API_URL não definida. Defina a variável de ambiente no runtime.');
+    }
+    console.log('[VITE_API_URL selected]', apiUrl);
+
     this.api = axios.create({
-      baseURL: `${(window as any).__ENV__?.VITE_API_URL || (import.meta as any).env.VITE_API_URL || `${window.location.protocol}//${window.location.hostname}:3001`}`,
+      baseURL: `${apiUrl}`,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',

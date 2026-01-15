@@ -5,6 +5,10 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // Log da variável de ambiente em tempo de servidor (dev/preview)
+  // Útil para validar -e VITE_API_URL no container
+  // Aparece no terminal onde o Vite inicia
+  ...(console.log('[VITECONF] VITE_API_URL =', process.env.VITE_API_URL), {}),
   server: {
     host: "::",
     port: 8080,
