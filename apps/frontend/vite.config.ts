@@ -8,6 +8,19 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS",
+      "Access-Control-Allow-Headers": "*",
+    },
+  },
+  preview: {
+    host: "0.0.0.0",
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS",
+      "Access-Control-Allow-Headers": "*",
+    },
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
