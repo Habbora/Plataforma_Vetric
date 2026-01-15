@@ -42,13 +42,7 @@ app.use(helmet({
 
 // CORS: Controle de origem
 const corsOptions = {
-  origin: process.env.NODE_ENV === 'production'
-    ? [
-        process.env.ADMIN_URL || '',
-        process.env.CLIENT_URL || '',
-        process.env.FRONTEND_URL || 'http://localhost:3000'
-      ].filter(Boolean)
-    : '*', // Desenvolvimento: permitir qualquer origem
+  origin: true,
   credentials: true,
   optionsSuccessStatus: 200,
 };

@@ -11,7 +11,7 @@ class VetricAPI {
 
   constructor() {
     this.api = axios.create({
-      baseURL: `${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/api`,
+      baseURL: `${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}`,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',
@@ -55,34 +55,34 @@ class VetricAPI {
   // ==================== DASHBOARD ====================
 
   async getDashboardStats() {
-    const { data } = await this.api.get('/dashboard/stats');
+    const { data } = await this.api.get('/api/dashboard/stats');
     return data.data;
   }
 
   async getChargers() {
-    const { data } = await this.api.get('/dashboard/chargers');
+    const { data } = await this.api.get('/api/dashboard/chargers');
     return data.data;
   }
 
   async getChargerByUuid(uuid: string) {
-    const { data } = await this.api.get(`/dashboard/charger/${uuid}`);
+    const { data } = await this.api.get(`/api/dashboard/charger/${uuid}`);
     return data.data;
   }
 
   // ==================== MORADORES ====================
 
   async getMoradores() {
-    const { data } = await this.api.get('/moradores');
+    const { data } = await this.api.get('/api/moradores');
     return data.data;
   }
 
   async getMoradorById(id: number) {
-    const { data } = await this.api.get(`/moradores/${id}`);
+    const { data } = await this.api.get(`/api/moradores/${id}`);
     return data.data;
   }
 
   async getMoradorByTag(tag: string) {
-    const { data } = await this.api.get(`/moradores/tag/${tag}`);
+    const { data } = await this.api.get(`/api/moradores/tag/${tag}`);
     return data.data;
   }
 
@@ -93,7 +93,7 @@ class VetricAPI {
     tag_rfid: string;
     notificacoes_ativas?: boolean;
   }) {
-    const { data } = await this.api.post('/moradores', morador);
+    const { data } = await this.api.post('/api/moradores', morador);
     return data.data;
   }
 
@@ -104,56 +104,56 @@ class VetricAPI {
     tag_rfid?: string;
     notificacoes_ativas?: boolean;
   }) {
-    const { data } = await this.api.put(`/moradores/${id}`, updates);
+    const { data } = await this.api.put(`/api/moradores/${id}`, updates);
     return data.data;
   }
 
   async deleteMorador(id: number) {
-    const { data } = await this.api.delete(`/moradores/${id}`);
+    const { data } = await this.api.delete(`/api/moradores/${id}`);
     return data;
   }
 
   async getMoradoresStats() {
-    const { data } = await this.api.get('/moradores/stats/summary');
+    const { data } = await this.api.get('/api/moradores/stats/summary');
     return data.data;
   }
 
   // ==================== CARREGAMENTOS ====================
 
   async getCarregamentos(limit: number = 100) {
-    const { data } = await this.api.get(`/carregamentos?limit=${limit}`);
+    const { data } = await this.api.get(`/api/carregamentos?limit=${limit}`);
     return data.data;
   }
 
   async getCarregamentosAtivos() {
-    const { data } = await this.api.get('/carregamentos/ativos');
+    const { data } = await this.api.get('/api/carregamentos/ativos');
     return data.data;
   }
 
   async getCarregamentosByMorador(moradorId: number, limit: number = 50) {
-    const { data } = await this.api.get(`/carregamentos/morador/${moradorId}?limit=${limit}`);
+    const { data } = await this.api.get(`/api/carregamentos/morador/${moradorId}?limit=${limit}`);
     return data.data;
   }
 
   async getCarregamentosStatsToday() {
-    const { data } = await this.api.get('/carregamentos/stats/today');
+    const { data } = await this.api.get('/api/carregamentos/stats/today');
     return data.data;
   }
 
   async getCarregamentosStatsByPeriod(start: string, end: string) {
-    const { data } = await this.api.get(`/carregamentos/stats/period?start=${start}&end=${end}`);
+    const { data } = await this.api.get(`/api/carregamentos/stats/period?start=${start}&end=${end}`);
     return data.data;
   }
 
   // ==================== TEMPLATES ====================
 
   async getTemplates() {
-    const { data } = await this.api.get('/templates');
+    const { data } = await this.api.get('/api/templates');
     return data.data;
   }
 
   async getTemplateByTipo(tipo: string) {
-    const { data } = await this.api.get(`/templates/${tipo}`);
+    const { data } = await this.api.get(`/api/templates/${tipo}`);
     return data.data;
   }
 
@@ -161,19 +161,19 @@ class VetricAPI {
     mensagem?: string;
     ativo?: boolean;
   }) {
-    const { data } = await this.api.put(`/templates/${tipo}`, updates);
+    const { data } = await this.api.put(`/api/templates/${tipo}`, updates);
     return data.data;
   }
 
   // ==================== RELATÓRIOS ====================
 
   async getRelatorios() {
-    const { data } = await this.api.get('/relatorios');
+    const { data } = await this.api.get('/api/relatorios');
     return data.data;
   }
 
   async uploadRelatorio(formData: FormData) {
-    const { data } = await this.api.post('/relatorios/upload', formData, {
+    const { data } = await this.api.post('/api/relatorios/upload', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -182,21 +182,21 @@ class VetricAPI {
   }
 
   async downloadRelatorio(id: number) {
-    const response = await this.api.get(`/relatorios/${id}/download`, {
+    const response = await this.api.get(`/api/relatorios/${id}/download`, {
       responseType: 'blob',
     });
     return response.data;
   }
 
   async deleteRelatorio(id: number) {
-    const { data } = await this.api.delete(`/relatorios/${id}`);
+    const { data } = await this.api.delete(`/api/relatorios/${id}`);
     return data;
   }
 
   // ==================== EVOLUTION API ====================
 
   async testEvolutionApi(telefone: string, mensagem: string) {
-    const { data } = await this.api.post('/test-evolution', {
+    const { data } = await this.api.post('/api/test-evolution', {
       telefone,
       mensagem,
     });
@@ -206,41 +206,48 @@ class VetricAPI {
   // ==================== CONFIGURAÇÕES ====================
 
   async getConfiguracoes() {
-    const { data } = await this.api.get('/config');
+    const { data } = await this.api.get('/api/config');
     return data.data;
   }
 
   async getConfiguracao(chave: string) {
-    const { data } = await this.api.get(`/config/${chave}`);
+    const { data } = await this.api.get(`/api/config/${chave}`);
     return data.data;
   }
 
   async updateConfiguracao(chave: string, valor: string) {
-    const { data } = await this.api.put(`/config/${chave}`, { valor });
+    const { data } = await this.api.put(`/api/config/${chave}`, { valor });
     return data.data;
   }
 
   async updateConfiguracoes(configs: Array<{ chave: string; valor: string }>) {
-    const { data } = await this.api.post('/config/batch', { configs });
+    const { data } = await this.api.post('/api/config/batch', { configs });
     return data.data;
   }
 
   // ==================== SYSTEM ====================
 
   async restartBackend() {
-    const { data } = await this.api.post('/system/restart');
+    const { data } = await this.api.post('/api/system/restart');
     return data;
   }
 
   async getSystemStatus() {
-    const { data } = await this.api.get('/system/status');
+    const { data } = await this.api.get('/api/system/status');
     return data.data;
   }
 
   // ==================== HEALTH CHECK ====================
 
   async healthCheck() {
-    const { data } = await axios.get(`${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/health`);
+    const { data } = await this.api.get('/health');
+    return data;
+  }
+
+  // ==================== AUTH ====================
+
+  async login(credentials: { email: string; senha: string }) {
+    const { data } = await this.api.post('/api/auth/login', credentials);
     return data;
   }
 }

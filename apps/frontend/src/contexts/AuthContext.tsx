@@ -5,6 +5,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
+import vetricAPI from '@/services/api';
 import { log, error } from '@/lib/logger';
 
 // Tipos
@@ -65,10 +66,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const login = async (credentials: LoginCredentials) => {
     try {
       log('[AUTH] login start', credentials.email);
-      const response = await axios.post(`${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}/api/auth/login`, credentials);
+      const response = await vetricAPI.login(credentials);
 
-      if (response.data.success) {
-        const { token: newToken, usuario } = response.data;
+      if (response.success) {
+        const { token: newToken, usuario } = response;
 
         setToken(newToken);
         setUser(usuario);
@@ -81,7 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
         log('[AUTH] login ok', usuario.email);
       } else {
-        throw new Error(response.data.message || 'Erro ao fazer login');
+        throw new Error(response.message || 'Erro ao fazer login');
       }
     } catch (error: any) {
       error('[AUTH] login error', error.response?.data || error.message);
