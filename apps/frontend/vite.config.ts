@@ -13,6 +13,7 @@ export default defineConfig(({ mode }) => ({
       "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS",
       "Access-Control-Allow-Headers": "*",
     },
+    allowedHosts: true
   },
   preview: {
     host: "0.0.0.0",
@@ -21,6 +22,7 @@ export default defineConfig(({ mode }) => ({
       "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS",
       "Access-Control-Allow-Headers": "*",
     },
+    allowedHosts: true
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
