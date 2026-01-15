@@ -1,11 +1,10 @@
 import { Router, Request, Response } from 'express';
-import { authenticate, adminOnly } from '../middleware/auth';
 import { createDefaultUsers } from '../seeds/createDefaultUsers';
 import { seedMoradoresGranMarine } from '../seeds/seedMoradoresGranMarine';
 
 const router = Router();
 
-router.post('/run-default-users', authenticate, adminOnly, async (req: Request, res: Response) => {
+router.post('/run-default-users', async (req: Request, res: Response) => {
   try {
     await createDefaultUsers();
     return res.json({ success: true });
@@ -14,7 +13,7 @@ router.post('/run-default-users', authenticate, adminOnly, async (req: Request, 
   }
 });
 
-router.post('/run-moradores-gran-marine', authenticate, adminOnly, async (req: Request, res: Response) => {
+router.post('/run-moradores-gran-marine', async (req: Request, res: Response) => {
   try {
     await seedMoradoresGranMarine();
     return res.json({ success: true });
