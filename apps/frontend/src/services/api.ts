@@ -11,12 +11,13 @@ class VetricAPI {
 
   constructor() {
     this.api = axios.create({
-      baseURL: `${(import.meta as any).env.VITE_API_URL || 'http://localhost:3001'}`,
+      baseURL: `${(window as any).__ENV__?.VITE_API_URL || (import.meta as any).env.VITE_API_URL || `${window.location.protocol}//${window.location.hostname}:3001`}`,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',
       },
     });
+    console.log('[VETRIC API BASE]', this.api.defaults.baseURL);
 
     // Interceptor para adicionar token de autenticação
     this.api.interceptors.request.use((config) => {

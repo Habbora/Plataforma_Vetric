@@ -5,6 +5,7 @@ import "./index.css";
 const env = import.meta.env;
 const visibleEnv = Object.fromEntries(Object.entries(env));
 console.log('[VETRIC FRONTEND ENV]', visibleEnv);
+console.log('[VETRIC FRONTEND RUNTIME ENV]', (window as any).__ENV__);
 
 window.addEventListener('error', (e) => {
   console.error('[GLOBAL ERROR]', e.message, e.error);
