@@ -1,0 +1,7 @@
+# Miscelânea
+
+- [EXPECTED_FORMATS.md](../../EXPECTED_FORMATS.md)
+- [COOKIES_FOR_WEBSOCKET.md](../../COOKIES_FOR_WEBSOCKET.md)
+- [MORADORES_GRAN_MARINE_EXTRAIDOS.md](../../MORADORES_GRAN_MARINE_EXTRAIDOS.md)
+- [alisson.md](../../alisson.md)
+

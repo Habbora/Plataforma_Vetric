@@ -1,0 +1,9 @@
+# Backend
+
+- [apps/backend/src/database/README.md](../../apps/backend/src/database/README.md)
+- [MIGRATIONS_QUICKSTART.md](../../apps/backend/MIGRATIONS_QUICKSTART.md)
+- [DOCUMENTACAO_TECNICA_AUTENTICACAO.md](../../DOCUMENTACAO_TECNICA_AUTENTICACAO.md)
+- [AUTENTICACAO_FINAL.md](../../AUTENTICACAO_FINAL.md)
+- [GUIA_LOGS.md](../../GUIA_LOGS.md)
+- [POLLING_SERVICE_IMPLEMENTADO.md](../../POLLING_SERVICE_IMPLEMENTADO.md)
+

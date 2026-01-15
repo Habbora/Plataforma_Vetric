@@ -1,0 +1,10 @@
+# DevOps e Deploy
+
+- [DOCKER_GUIDE.md](../../DOCKER_GUIDE.md)
+- [DOCKER_QUICKSTART.md](../../DOCKER_QUICKSTART.md)
+- [DOCKER_RESUMO.md](../../DOCKER_RESUMO.md)
+- [DOCKER_MUDANCAS.md](../../DOCKER_MUDANCAS.md)
+- [DEPLOY.md](./DEPLOY.md)
+- [GIT_SETUP.md](../../GIT_SETUP.md)
+- [GIT_WORKFLOW.md](../../GIT_WORKFLOW.md)
+

@@ -5,8 +5,7 @@
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import axios from 'axios';
-
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+import { getApiBaseUrl } from '../config/runtime';
 
 // Tipos
 export type UserRole = 'ADMIN' | 'CLIENTE';
@@ -65,7 +64,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Login
   const login = async (credentials: LoginCredentials) => {
     try {
-      const response = await axios.post(`${API_URL}/api/auth/login`, credentials);
+      const response = await axios.post(`${getApiBaseUrl()}/api/auth/login`, credentials);
 
       if (response.data.success) {
         const { token: newToken, usuario } = response.data;

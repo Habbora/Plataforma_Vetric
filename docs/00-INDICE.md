@@ -10,12 +10,30 @@
 Se você é novo no projeto, comece por aqui:
 
 1. **[README Principal](../README.md)** - Visão geral do projeto
-2. **[fase1.md](../fase1.md)** - Resumo completo da Fase 1 (MVP)
-3. **[checklist_fase1.md](../checklist_fase1.md)** - Checklist para deploy
+2. **[Fase 1](./fase1/fase1.md)** - Resumo completo da Fase 1 (MVP)
+3. **[Checklist Fase 1](./fase1/checklist_fase1.md)** - Checklist para deploy
 
 ---
 
 ## 📖 DOCUMENTAÇÃO POR CATEGORIA
+
+Para navegação estruturada, use os READMEs das categorias:
+
+- [Introdução](./introducao/README.md)
+- [Guias e Setup](./guias/README.md)
+- [API](./api/README.md)
+- [Backend](./backend/README.md)
+- [Frontend](./frontend/README.md)
+- [DevOps e Deploy](./devops/README.md)
+- [Produção](./producao/README.md)
+- [Testes](./testes/README.md)
+- [Planejamento](./planejamento/README.md)
+- [Análises](./analises/README.md)
+- [Troubleshooting](./troubleshooting/README.md)
+- [Fase 1](./fase1/README.md)
+- [Tokens e Autenticação](./tokens/README.md)
+- [Relatórios](./relatorios/README.md)
+- [Miscelânea](./misc/README.md)
 
 ### 🚀 INÍCIO E SETUP
 
@@ -38,10 +56,10 @@ Se você é novo no projeto, comece por aqui:
 
 | Documento | Descrição | Localização |
 |-----------|-----------|-------------|
-| **AUTENTICACAO_FINAL.md** | Autenticação CVE-PRO (definitivo) | [Ver arquivo](../AUTENTICACAO_FINAL.md) |
+| **AUTENTICACAO_FINAL.md** | Autenticação CVE-PRO (definitivo) | [Ver arquivo](./tokens/AUTENTICACAO_FINAL.md) |
 | **DOCUMENTACAO_TECNICA_AUTENTICACAO.md** | Detalhes técnicos de auth | [Ver arquivo](../DOCUMENTACAO_TECNICA_AUTENTICACAO.md) |
-| **API_DOCUMENTATION.md** | Documentação completa da API | [Ver arquivo](../API_DOCUMENTATION.md) |
-| **API_ARCHITECTURE.md** | Arquitetura da API | [Ver arquivo](../API_ARCHITECTURE.md) |
+| **API_DOCUMENTATION.md** | Documentação completa da API | [Ver arquivo](./api/API_DOCUMENTATION.md) |
+| **API_ARCHITECTURE.md** | Arquitetura da API | [Ver arquivo](./api/API_ARCHITECTURE.md) |
 
 ### 🐛 PROBLEMAS E CORREÇÕES
 
@@ -56,19 +74,19 @@ Se você é novo no projeto, comece por aqui:
 
 | Documento | Descrição | Localização |
 |-----------|-----------|-------------|
-| **FAQ_PRODUCAO.md** | Perguntas frequentes sobre produção | [Ver arquivo](../FAQ_PRODUCAO.md) |
-| **CHECKLIST_PRODUCAO.md** | Checklist de produção | [Ver arquivo](../CHECKLIST_PRODUCAO.md) |
-| **GUIA_LOGS.md** | Como acessar logs do sistema | [Ver arquivo](../GUIA_LOGS.md) |
-| **DEPLOY.md** | Guia de deploy | [Ver arquivo](../DEPLOY.md) |
+| **FAQ_PRODUCAO.md** | Perguntas frequentes sobre produção | [Ver arquivo](./producao/FAQ_PRODUCAO.md) |
+| **CHECKLIST_PRODUCAO.md** | Checklist de produção | [Ver arquivo](./producao/CHECKLIST_PRODUCAO.md) |
+| **GUIA_LOGS.md** | Como acessar logs do sistema | [Ver arquivo](./producao/GUIA_LOGS.md) |
+| **DEPLOY.md** | Guia de deploy | [Ver arquivo](./devops/DEPLOY.md) |
 | **MIGRACAO_PRODUCAO.md** | Migração para produção | [Ver arquivo](../apps/MIGRACAO_PRODUCAO.md) |
 
 ### 📱 EVOLUTION API (WhatsApp)
 
 | Documento | Descrição | Localização |
 |-----------|-----------|-------------|
-| **ANALISE_COMPLETA_EVOLUTION_API.md** | Análise completa da Evolution API | [Ver arquivo](../ANALISE_COMPLETA_EVOLUTION_API.md) |
-| **INTEGRACAO_EVOLUTION_API.md** | Integração com Evolution API | [Ver arquivo](../INTEGRACAO_EVOLUTION_API.md) |
-| **README_EVOLUTION_API.md** | README da Evolution API | [Ver arquivo](../README_EVOLUTION_API.md) |
+| **ANALISE_COMPLETA_EVOLUTION_API.md** | Análise completa da Evolution API | [Ver arquivo](./analises/ANALISE_COMPLETA_EVOLUTION_API.md) |
+| **INTEGRACAO_EVOLUTION_API.md** | Integração com Evolution API | [Ver arquivo](./api/INTEGRACAO_EVOLUTION_API.md) |
+| **README_EVOLUTION_API.md** | README da Evolution API | [Ver arquivo](./api/README_EVOLUTION_API.md) |
 
 ### 📋 RESUMOS E ANÁLISES
 

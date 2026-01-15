@@ -1,0 +1,2 @@
+@import ../../RESUMO_IMPLEMENTACAO_12JAN2026.md
+

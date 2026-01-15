@@ -1,0 +1,2 @@
+@import ../../RESUMO_EXECUTIVO_12JAN2026.md
+

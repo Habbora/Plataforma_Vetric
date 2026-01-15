@@ -4,16 +4,14 @@
  */
 
 import axios, { AxiosInstance } from 'axios';
-
-// URL do backend (ajuste conforme necessário)
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+import { getApiBaseUrl } from '../config/runtime';
 
 class VetricAPI {
   private api: AxiosInstance;
 
   constructor() {
     this.api = axios.create({
-      baseURL: `${API_BASE_URL}/api`,
+      baseURL: `${getApiBaseUrl()}/api`,
       timeout: 30000,
       headers: {
         'Content-Type': 'application/json',
@@ -230,7 +228,7 @@ class VetricAPI {
   // ==================== HEALTH CHECK ====================
 
   async healthCheck() {
-    const { data } = await axios.get(`${API_BASE_URL}/health`);
+    const { data } = await axios.get(`${getApiBaseUrl()}/health`);
     return data;
   }
 }

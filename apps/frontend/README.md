@@ -4,11 +4,42 @@
 
 **URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
-## How can I edit this code?
+## Como editar e rodar este frontend
 
-There are several ways of editing your application.
+Há várias formas de editar e executar a aplicação.
 
-**Use Lovable**
+**Usar Bun (preferido)**
+
+Pré-requisitos:
+- Bun instalado: https://bun.sh/docs/installation
+
+Passos:
+
+```sh
+# 1. Clonar o repositório
+git clone <YOUR_GIT_URL>
+
+# 2. Ir para a pasta do frontend
+cd apps/frontend
+
+# 3. Configurar variáveis de ambiente
+cp .env.example .env
+# edite .env e ajuste VITE_API_URL (ex.: http://localhost:3001)
+
+# 4. Instalar deps
+bun install
+
+# 5. Rodar em desenvolvimento
+bun run dev
+
+# 6. Build de produção
+bun run build
+
+# 7. Preview do build
+bun run preview
+```
+
+**Usar npm (alternativo)**
 
 Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
@@ -18,21 +49,15 @@ Changes made via Lovable will be committed automatically to this repo.
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Requisitos: Node.js & npm - [instalar com nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-Follow these steps:
+Passos:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+cd apps/frontend
+cp .env.example .env
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
 
@@ -50,9 +75,9 @@ npm run dev
 - Click on "New codespace" to launch a new Codespace environment.
 - Edit files directly within the Codespace and commit and push your changes once you're done.
 
-## What technologies are used for this project?
+## Tecnologias usadas
 
-This project is built with:
+Este projeto usa:
 
 - Vite
 - TypeScript
@@ -60,9 +85,9 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Como publicar este projeto
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+Abra [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) e clique em Share -> Publish.
 
 ## Can I connect a custom domain to my Lovable project?
 
