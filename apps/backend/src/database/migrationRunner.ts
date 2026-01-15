@@ -61,12 +61,13 @@ export class MigrationRunner {
     }
 
     const files = fs.readdirSync(migrationsDir)
-      .filter(f => f.endsWith('.ts') || f.endsWith('.js'))
+      .filter(f => /^\d{3}_.+\.(ts|js)$/.test(f) && !f.endsWith('.d.ts'))
       .sort(); // Ordena por nome (001, 002, 003...)
 
     for (const file of files) {
       const filePath = path.join(migrationsDir, file);
-      const migration = await import(filePath);
+      let migration: any = await import(filePath);
+      migration = migration?.default ?? migration;
       
       this.register({
         name: migration.name,
